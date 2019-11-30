@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pikachu导航</title>
+  <style type="text/css">
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+  </style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: #eee;
+    }
+
+    .icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 24px;
+      height: 24px;
+      padding: 10px;
+    }
+
+    .info {
+      margin: 70px;
+      width: 250px;
+    }
+
+    h3 {
+      margin: 20px 0;
+    }
+
+    li {
+      font-size: 18px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <svg class="icon">
+      <use xlink:href="#icon-menu"></use>
+    </svg>
+    <div class="info">
+      <h3>功能介绍</h3>
+      <ul>
+        <li>1. 画皮卡丘</li>
+        <li>2. 网站添加与删除</li>
+        <li>3. 键盘导航</li>
+      </ul>
+    </div>
+  </div>
+  <script src="//at.alicdn.com/t/font_1535844_82wzl6xe795.js"></script>
+  <script>
+    const menu = document.getElementsByClassName('icon')[0]
+    menu.onclick = () => {
+      history.go(-1)
+      // window.history.back(-1);
+    }
+  </script>
+</body>
+
+</html>
