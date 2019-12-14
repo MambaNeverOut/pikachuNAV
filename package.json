@@ -2,7 +2,7 @@
   "scripts": {
     "build": "rm -rf dist && parcel build src/index.html --no-minify --public-url ./"
   },
-  "name": "NAV",
+  "name": "myNav",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT"

@@ -19,94 +19,9 @@ const simplifyUrl = url => {
     .replace(/\/.*/, "");
 };
 
-const render = () => {
-  $siteList.find("li:not(.last)").remove();
-  hashMap.forEach((item, index) => {
-    const $li = $(
-      `<li>
-          <div class="site">
-            <div class="logoWrapper">
-              <div class="logo"> 
-                ${item.logo}
-              </div>
-            </div>
-            <div class="close">
-              <svg class="icon">
-                <use xlink:href="#icon-remove"></use>
-              </svg>
-            </div>
-            <div class="closePC">
-              <svg class="icon">
-                <use xlink:href="#icon-tag-remove"></use>
-              </svg>
-            </div>
-            <div class="text">${simplifyUrl(item.url)}</div>
-          </div>
-      </li>`
-    ).insertBefore($lastLi);
-    $(".logoWrapper").on("click", () => {
-      window.open(item.url);
-    });
-    $(".close").on("click", function(event) {
-      // event.stopPropagation();
-      hashMap.splice(index, 1);
-      render();
-    });
-    const $closePC = $li.find(".closePC");
-    $(".closePC").on("click", function(event) {
-      // event.stopPropagation();
-      if (window.confirm("确定要删除吗")) {
-        hashMap.splice(index, 1);
-        render();
-      }
-    });
-  });
-};
-render();
-
-$(".addButton").on("click", function() {
-  let url = window.prompt("请输入你要添加的网址：").trim();
-  console.log(url);
-  if (url.indexOf("http") !== 0) {
-    url = `https://${url}`;
-  }
-  hashMap.push({
-    logo: simplifyUrl(url)[0].toUpperCase(),
-    url: url
-  });
-  render();
-});
-
-$(".headerMenu").on("click", e => {
-  $asideLeft.style.display = "block";
-  $cover.style.display = "block";
-});
-
-$(".cover").on("click", () => {
-  $asideLeft.style.display = "none";
-  $cover.style.display = "none";
-});
-
-$(".email").on("click", () => {});
-
-$(document).on("keypress", e => {
-  const { key } = e;
-  hashMap.forEach(item => {
-    if (item.logo.toLowerCase() === key) {
-      window.open(item.url);
-    }
-  });
-});
-
-window.onbeforeunload = () => {
-  const string = JSON.stringify(hashMap);
-  localStorage.setItem("myNav", string);
-};
-
-// 移动端滑动
-window.onload = () => {
+const slide = () => {
   const $liSite = Array.from($(".site"));
-  // console.log($liSite);
+  console.log($liSite);
   $liSite.forEach(item => {
     item.addEventListener(
       "touchstart",
@@ -144,3 +59,97 @@ window.onload = () => {
     );
   });
 };
+
+const render = () => {
+  $siteList.find("li:not(.last)").remove();
+  hashMap.forEach((item, index) => {
+    const $li = $(
+      `<li>
+          <div class="site">
+            <div class="logoWrapper">
+              <div class="logo"> 
+                ${item.logo}
+              </div>
+            </div>
+            <div class="close">
+              <svg class="icon">
+                <use xlink:href="#icon-remove"></use>
+              </svg>
+            </div>
+            <div class="closePC">
+              <svg class="icon">
+                <use xlink:href="#icon-tag-remove"></use>
+              </svg>
+            </div>
+            <div class="text">${simplifyUrl(item.url)}</div>
+          </div>
+      </li>`
+    ).insertBefore($lastLi);
+    // console.log($siteList);
+    // console.log(typeof $siteList);
+    slide();
+    $(".logoWrapper").on("click", () => {
+      window.open(item.url);
+    });
+    $(".close").on("click", function(event) {
+      // event.stopPropagation();
+      hashMap.splice(index, 1);
+      render();
+    });
+    $(".closePC").on("click", function(event) {
+      // event.stopPropagation();
+      if (window.confirm("确定要删除吗")) {
+        hashMap.splice(index, 1);
+        render();
+      }
+    });
+  });
+};
+render();
+
+$(".addButton").on("click", function() {
+  let url = window.prompt("请输入你要添加的网址：").trim();
+  console.log(url);
+  if (url.indexOf("http") !== 0) {
+    url = `https://${url}`;
+  }
+  hashMap.push({
+    logo: simplifyUrl(url)[0].toUpperCase(),
+    url: url
+  });
+
+  render();
+});
+
+$(".headerMenu").on("click", e => {
+  $asideLeft.style.display = "block";
+  $cover.style.display = "block";
+});
+
+$(".cover").on("click", () => {
+  $asideLeft.style.display = "none";
+  $cover.style.display = "none";
+});
+
+$(".email").on("click", () => {});
+
+$(document).on("keypress", e => {
+  const { key } = e;
+  hashMap.forEach(item => {
+    if (item.logo.toLowerCase() === key) {
+      window.open(item.url);
+    }
+  });
+});
+
+window.onbeforeunload = () => {
+  const string = JSON.stringify(hashMap);
+  localStorage.setItem("myNav", string);
+};
+
+// 移动端滑动;
+// console.log($siteList);
+
+// console.log($liSite);
+
+// slide();
