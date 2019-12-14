@@ -136,7 +136,8 @@ var hashMap = myNav || [{
 
 var simplifyUrl = function simplifyUrl(url) {
   return url.replace("https://", "").replace("http://", "").replace("www.", "").replace(/\/.*/, "");
-};
+}; // 移动端滑动;
+
 
 var slide = function slide() {
   var $liSite = Array.from($(".site"));
@@ -224,8 +225,8 @@ $(".headerMenu").on("click", function (e) {
 $(".cover").on("click", function () {
   $asideLeft.style.display = "none";
   $cover.style.display = "none";
-});
-$(".email").on("click", function () {});
+}); // $(".email").on("click", () => {});
+
 $(document).on("keypress", function (e) {
   var key = e.key;
   hashMap.forEach(function (item) {
@@ -238,10 +239,7 @@ $(document).on("keypress", function (e) {
 window.onbeforeunload = function () {
   var string = JSON.stringify(hashMap);
   localStorage.setItem("myNav", string);
-}; // 移动端滑动;
-// console.log($siteList);
-// console.log($liSite);
-// slide();
+};
 },{}],"C:/Users/86138/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -270,7 +268,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12463" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12825" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

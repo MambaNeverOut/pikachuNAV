@@ -19,6 +19,7 @@ const simplifyUrl = url => {
     .replace(/\/.*/, "");
 };
 
+// 移动端滑动;
 const slide = () => {
   const $liSite = Array.from($(".site"));
   console.log($liSite);
@@ -131,7 +132,7 @@ $(".cover").on("click", () => {
   $cover.style.display = "none";
 });
 
-$(".email").on("click", () => {});
+// $(".email").on("click", () => {});
 
 $(document).on("keypress", e => {
   const { key } = e;
@@ -146,10 +147,3 @@ window.onbeforeunload = () => {
   const string = JSON.stringify(hashMap);
   localStorage.setItem("myNav", string);
 };
-
-// 移动端滑动;
-// console.log($siteList);
-
-// console.log($liSite);
-
-// slide();
