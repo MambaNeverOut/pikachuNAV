@@ -5,5 +5,8 @@
   "name": "myNav",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }
