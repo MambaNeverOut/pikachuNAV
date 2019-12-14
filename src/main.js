@@ -22,7 +22,7 @@ const simplifyUrl = url => {
 // 移动端滑动;
 const slide = () => {
   const $liSite = Array.from($(".site"));
-  console.log($liSite);
+  // console.log($liSite);
   $liSite.forEach(item => {
     item.addEventListener(
       "touchstart",
@@ -31,7 +31,7 @@ const slide = () => {
           let touch = event.targetTouches[0];
           let startX = touch.pageX;
           let disX;
-          console.log(startX);
+          // console.log(startX);
           item.addEventListener("touchmove", move);
           function move(event) {
             event.preventDefault();
