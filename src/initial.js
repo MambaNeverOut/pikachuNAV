@@ -186,6 +186,7 @@ const c = {
       const $cover = $(".headerLeft").find(".cover")[0];
       $(".headerMenu").on("click", e => {
         $asideLeft.style.display = "block";
+        document.body.style.overflow='hidden'
         $cover.style.display = "block";
       });
     },
@@ -194,6 +195,7 @@ const c = {
       const $cover = $(".headerLeft").find(".cover")[0];
       $(".cover").on("click", () => {
         $asideLeft.style.display = "none";
+        document.body.style.overflow='auto'
         $cover.style.display = "none";
       });
     },

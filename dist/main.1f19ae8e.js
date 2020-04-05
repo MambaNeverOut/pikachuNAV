@@ -11109,6 +11109,7 @@ var c = {
       var $cover = (0, _jquery.default)(".headerLeft").find(".cover")[0];
       (0, _jquery.default)(".headerMenu").on("click", function (e) {
         $asideLeft.style.display = "block";
+        document.body.style.overflow = 'hidden';
         $cover.style.display = "block";
       });
     },
@@ -11117,6 +11118,7 @@ var c = {
       var $cover = (0, _jquery.default)(".headerLeft").find(".cover")[0];
       (0, _jquery.default)(".cover").on("click", function () {
         $asideLeft.style.display = "none";
+        document.body.style.overflow = 'auto';
         $cover.style.display = "none";
       });
     },
