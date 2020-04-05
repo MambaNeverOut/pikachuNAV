@@ -1,9 +1,8 @@
 import "./style.css";
 import $ from "jquery";
 
-
-
 const myNav = JSON.parse(localStorage.getItem("myNav"));
+const eventBus = $({})
 
 
 const m = {
@@ -50,7 +49,7 @@ const v = {
             </svg>
             <span>功能介绍</span>
           </a>
-          <a href="https://fangyinghang.com/make-a-pikachu/">
+          <a href="https://mambaneverout.github.io/pikachu/dist/index.html">
             <svg class="icon">
               <use xlink:href="#icon-url"></use>
             </svg>
@@ -80,7 +79,9 @@ const v = {
 
   <main class="globalMain">
     <div class="piKaWrapper">
-      <img class="piKa" src="./皮卡丘1.71732775.png" alt="皮卡皮卡">
+      <a class="piKa"  href="https://mambaneverout.github.io/pikachu/dist/index.html">
+        <img src="./皮卡丘1.71732775.png" alt="皮卡皮卡">
+      </a>
     </div>
     <form class="searchForm" method="GET" action="https://www.baidu.com/s">
       <input type="text" name="wd">
@@ -134,21 +135,21 @@ const v = {
         </li>`
       ).insertBefore($lastLi);
       c.slide();
-      $(".logoWrapper").on("click", () => {
-        window.open(item.url);
-      });
-      $(".close").on("click", function (event) {
-        // event.stopPropagation();
+      $li.on('click','.logoWrapper', () => {
+        window.open(item.url)
+      })
+      $li.on('click', '.close', (e) => {
+        e.stopPropagation() // 阻止冒泡
         m.data.hashMap.splice(index, 1);
         v.render();
-      });
-      $(".closePC").on("click", function (event) {
-        // event.stopPropagation();
+      })
+      $li.on('click', '.closePC', (e) => {
+        e.stopPropagation() // 阻止冒泡
         if (window.confirm("确定要删除吗")) {
-          m.data.hashMap.splice(index, 1);
-          v.render();
-        }
-      });
+            m.data.hashMap.splice(index, 1);
+            v.render();
+          }
+      })
     });
   }
 };

@@ -11021,6 +11021,7 @@ var _jquery = _interopRequireDefault(require("jquery"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var myNav = JSON.parse(localStorage.getItem("myNav"));
+var eventBus = (0, _jquery.default)({});
 var m = {
   data: {
     hashMap: myNav || [{
@@ -11041,7 +11042,7 @@ var m = {
 };
 var v = {
   el: null,
-  html: "\n  <header class=\"globalHeader\">\n    <div class=\"headerLeft\">\n      <span class=\"headerMenu\">\n        <svg class=\"icon\">\n          <use xlink:href=\"#icon-menu\"></use>\n        </svg>\n      </span>\n      <aside class=\"asideLeft\">\n        <div class=\"asideLogo\">\n          <img src=\"./aside.87b9b813.jpg\">\n          <span>\u76AE\u5361\u4E18 1.0</span>\n        </div>\n        <div class=\"aside-content\">\n          <a href=\"./introduction.html\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-introduction\"></use>\n            </svg>\n            <span>\u529F\u80FD\u4ECB\u7ECD</span>\n          </a>\n          <a href=\"https://fangyinghang.com/make-a-pikachu/\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-url\"></use>\n            </svg>\n            <span>\n              \u753B\u4E2A\u76AE\u5361\u4E18\n            </span>\n          </a>\n          <a href=\"./BB.html\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-BB\"></use>\n            </svg>\n            <span>\n              \u5C0F\u58F0BB\n            </span>\n          </a>\n          <a href=\"mailto:yaokai729@outlook.com\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-email\"></use>\n            </svg>\n            <span>\u4E0E\u6211\u8054\u7CFB</span>\n          </a>\n        </div>\n      </aside>\n      <div class=\"cover\"></div>\n    </div>\n  </header>\n\n  <main class=\"globalMain\">\n    <div class=\"piKaWrapper\">\n      <img class=\"piKa\" src=\"./\u76AE\u5361\u4E181.71732775.png\" alt=\"\u76AE\u5361\u76AE\u5361\">\n    </div>\n    <form class=\"searchForm\" method=\"GET\" action=\"https://www.baidu.com/s\">\n      <input type=\"text\" name=\"wd\">\n      <button type=\"submit\">\u641C\u7D22</button>\n    </form>\n    <ul class=\"siteList\">\n      <li class=\"last\">\n        <div class=\"addButton\">\n          <div class=\"icon-wrapper\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-add\"></use>\n            </svg>\n          </div>\n          <div class=\"text\">\n            \u65B0\u589E\u7F51\u7AD9\n          </div>\n        </div>\n      </li>\n    </ul>\n  </main>\n  ",
+  html: "\n  <header class=\"globalHeader\">\n    <div class=\"headerLeft\">\n      <span class=\"headerMenu\">\n        <svg class=\"icon\">\n          <use xlink:href=\"#icon-menu\"></use>\n        </svg>\n      </span>\n      <aside class=\"asideLeft\">\n        <div class=\"asideLogo\">\n          <img src=\"./aside.87b9b813.jpg\">\n          <span>\u76AE\u5361\u4E18 1.0</span>\n        </div>\n        <div class=\"aside-content\">\n          <a href=\"./introduction.html\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-introduction\"></use>\n            </svg>\n            <span>\u529F\u80FD\u4ECB\u7ECD</span>\n          </a>\n          <a href=\"https://mambaneverout.github.io/pikachu/dist/index.html\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-url\"></use>\n            </svg>\n            <span>\n              \u753B\u4E2A\u76AE\u5361\u4E18\n            </span>\n          </a>\n          <a href=\"./BB.html\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-BB\"></use>\n            </svg>\n            <span>\n              \u5C0F\u58F0BB\n            </span>\n          </a>\n          <a href=\"mailto:yaokai729@outlook.com\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-email\"></use>\n            </svg>\n            <span>\u4E0E\u6211\u8054\u7CFB</span>\n          </a>\n        </div>\n      </aside>\n      <div class=\"cover\"></div>\n    </div>\n  </header>\n\n  <main class=\"globalMain\">\n    <div class=\"piKaWrapper\">\n      <a class=\"piKa\"  href=\"https://mambaneverout.github.io/pikachu/dist/index.html\">\n        <img src=\"./\u76AE\u5361\u4E181.71732775.png\" alt=\"\u76AE\u5361\u76AE\u5361\">\n      </a>\n    </div>\n    <form class=\"searchForm\" method=\"GET\" action=\"https://www.baidu.com/s\">\n      <input type=\"text\" name=\"wd\">\n      <button type=\"submit\">\u641C\u7D22</button>\n    </form>\n    <ul class=\"siteList\">\n      <li class=\"last\">\n        <div class=\"addButton\">\n          <div class=\"icon-wrapper\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-add\"></use>\n            </svg>\n          </div>\n          <div class=\"text\">\n            \u65B0\u589E\u7F51\u7AD9\n          </div>\n        </div>\n      </li>\n    </ul>\n  </main>\n  ",
   init: function init(container) {
     v.el = (0, _jquery.default)(container);
     (0, _jquery.default)(v.html).appendTo(v.el);
@@ -11053,16 +11054,18 @@ var v = {
     m.data.hashMap.forEach(function (item, index) {
       var $li = (0, _jquery.default)("<li>\n            <div class=\"site\">\n              <div class=\"logoWrapper\">\n                <div class=\"logo\"> \n                  ".concat(item.logo, "\n                </div>\n              </div>\n              <div class=\"close\">\n                <svg class=\"icon\">\n                  <use xlink:href=\"#icon-remove\"></use>\n                </svg>\n              </div>\n              <div class=\"closePC\">\n                <svg class=\"icon\">\n                  <use xlink:href=\"#icon-tag-remove\"></use>\n                </svg>\n              </div>\n              <div class=\"text\">").concat(c.simplifyUrl(item.url), "</div>\n            </div>\n        </li>")).insertBefore($lastLi);
       c.slide();
-      (0, _jquery.default)(".logoWrapper").on("click", function () {
+      $li.on('click', '.logoWrapper', function () {
         window.open(item.url);
       });
-      (0, _jquery.default)(".close").on("click", function (event) {
-        // event.stopPropagation();
+      $li.on('click', '.close', function (e) {
+        e.stopPropagation(); // 阻止冒泡
+
         m.data.hashMap.splice(index, 1);
         v.render();
       });
-      (0, _jquery.default)(".closePC").on("click", function (event) {
-        // event.stopPropagation();
+      $li.on('click', '.closePC', function (e) {
+        e.stopPropagation(); // 阻止冒泡
+
         if (window.confirm("确定要删除吗")) {
           m.data.hashMap.splice(index, 1);
           v.render();
@@ -11210,7 +11213,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6080" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14405" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

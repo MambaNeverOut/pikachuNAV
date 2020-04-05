@@ -1,6 +1,7 @@
 body {
-  width: 100vw;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background: #eee;
 }
 
@@ -15,7 +16,11 @@ body {
   width: 24px;
   height: 24px;
 }
-
+@media(min-width:500px) {
+  .globalHeader .headerLeft {
+    display: none;
+  }
+}
 .headerLeft .asideLeft {
   display: none;
   position: absolute;
@@ -77,7 +82,7 @@ body {
 }
 
 .globalMain {
-  margin: 20px;
+  margin: 50px 20px 20px 20px;
 }
 
 .globalMain .piKaWrapper {
@@ -89,6 +94,8 @@ body {
 .globalMain .piKa {
   width: 60%;
   height: 30%;
+}
+.globalMain .piKa img{
   border: 1px solid green;
   border-radius: 10px;
 }
