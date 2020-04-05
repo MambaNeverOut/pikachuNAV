@@ -80,7 +80,7 @@ const v = {
   <main class="globalMain">
     <div class="piKaWrapper">
       <a class="piKa"  href="https://mambaneverout.github.io/pikachu/dist/index.html">
-        <img src="./皮卡丘1.71732775.png" alt="皮卡皮卡">
+        <img src="./pikachu.5d2b9fce.png" alt="皮卡皮卡">
       </a>
     </div>
     <form class="searchForm" method="GET" action="https://www.baidu.com/s">
